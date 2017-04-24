@@ -89,5 +89,4 @@ describe "create a new entry in draft mode", type: :feature do
     end    
   
   end
-
 end
