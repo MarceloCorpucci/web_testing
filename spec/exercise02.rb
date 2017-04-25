@@ -20,14 +20,11 @@ describe "create a new entry", type: :feature do
     end
 
     after :each do
-      visit "http://localhost:5000/admin"
-      find('body > div > div.navbar > div > ul:nth-child(2) > li:nth-child(2) > a').click
-      
-      page.all('body > div > table > tbody').each do |tr|
-        if tr.has_text?('this is my post') 
-        	tr.all('td')[1].click_button('Delete record')
-        end
-      end
+      visit "http://localhost:5000/admin/entry"
+      find('body > div > table > thead > tr > th.column-header.col-created_timestamp > a').click
+      find('body > div > table > thead > tr > th.column-header.col-created_timestamp > a').click
+      find('body > div > table > tbody > tr:nth-child(1) > td.list-buttons-column > form > button > i').click
+      page.driver.browser.switch_to.alert.accept
     end
 
   end
