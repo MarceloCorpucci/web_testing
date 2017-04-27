@@ -3,7 +3,8 @@ require 'capybara/rspec'
 require 'selenium-webdriver'
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :firefox)
+  Selenium::WebDriver::Chrome.driver_path = 'C:\ChromeDriver\chromedriver.exe'
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
 Capybara.configure do |config|
@@ -11,7 +12,7 @@ Capybara.configure do |config|
 end
 
 Capybara.default_driver = :selenium
-Capybara.javascript_driver = :firefox
+Capybara.javascript_driver = :chrome
 
 Capybara.page.driver.browser.manage.window.maximize
 
